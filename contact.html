@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact & Pledge - UAE Sustainability</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">UAE Sustainability</div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="living.html">Sustainable Living</a></li>
+                <li><a href="energy.html">Clean Energy</a></li>
+                <li><a href="resources.html">Water & Waste</a></li>
+                <li><a href="initiatives.html">Initiatives</a></li>
+                <li><a href="contact.html">Contact & Pledge</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h1>Contact & Take the Sustainability Pledge</h1>
+            <p>Share your information and commit to an eco-friendly practice in your community.</p>
+
+            <form action="#" method="post">
+                <fieldset>
+                    <legend>Personal Information</legend>
+                    
+                    <div class="form-group">
+                        <label for="fullname">Full Name:</label>
+                        <input type="text" id="fullname" name="fullname" required placeholder="Enter your full name">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address:</label>
+                        <input type="email" id="email" name="email" required placeholder="name@example.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="emirate">Select Emirate:</label>
+                        <select id="emirate" name="emirate" required>
+                            <option value="">--Choose your Emirate--</option>
+                            <option value="abu-dhabi">Abu Dhabi</option>
+                            <option value="dubai">Dubai</option>
+                            <option value="sharjah">Sharjah</option>
+                            <option value="ajman">Ajman</option>
+                            <option value="umm-al-quwain">Umm Al Quwain</option>
+                            <option value="ras-al-khaimah">Ras Al Khaimah</option>
+                            <option value="fujairah">Fujairah</option>
+                        </select>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Interests & Pledge</legend>
+
+                    <div class="form-group">
+                        <label>Sustainability Interests:</label>
+                        <label><input type="checkbox" name="interests" value="energy"> Clean Energy</label>
+                        <label><input type="checkbox" name="interests" value="water"> Water Conservation</label>
+                        <label><input type="checkbox" name="interests" value="waste"> Waste Reduction</label>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="pledge">Your Personal Pledge Message:</label>
+                        <textarea id="pledge" name="pledge" rows="4" required placeholder="Write how you plan to stay sustainable..."></textarea>
+                    </div>
+                </fieldset>
+
+                <button type="submit">Submit Pledge</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 UAE Sustainability Awareness. All rights reserved.</p>
+    </footer>
+</body>
+</html>

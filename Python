@@ -1,0 +1,127 @@
+# Part B: Campus Event Registration System
+
+# Required aligned lists
+event_names = []
+event_fees = []
+event_seats = []
+
+def add_event():
+    print("\n--- Add New Event ---")
+    name = input("Enter event name: ").strip()
+    if not name:
+        print("Error: Event name cannot be blank.")
+        return
+    
+    # Check for duplicate names
+    if name in event_names:
+        print("Error: An event with this name already exists.")
+        return
+
+    # Validate registration fee
+    try:
+        fee = float(input("Enter registration fee (AED): "))
+        if fee < 0:
+            print("Error: Fee cannot be negative.")
+            return
+    except ValueError:
+        print("Error: Invalid numeric input for fee.")
+        return
+
+    # Validate available seats
+    try:
+        seats = int(input("Enter number of available seats: "))
+        if seats <= 0:
+            print("Error: Number of seats must be a positive integer.")
+            return
+    except ValueError:
+        print("Error: Invalid numeric input for seats.")
+        return
+
+    # Append to aligned lists
+    event_names.append(name)
+    event_fees.append(fee)
+    event_seats.append(seats)
+    print(f"Success: Event '{name}' added successfully!")
+
+
+def view_events():
+    print("\n--- Available Events Summary ---")
+    if not event_names:
+        print("No events have been added yet.")
+        return
+
+    for i in range(len(event_names)):
+        print(f"{i + 1}. Event Name: {event_names[i]} | Fee: AED {event_fees[i]:.2f} | Remaining Seats: {event_seats[i]}")
+
+
+def register_seats():
+    print("\n--- Register Seats for an Event ---")
+    if not event_names:
+        print("No events available to register for.")
+        return
+
+    view_events()
+    name = input("\nEnter the exact name of the event you want to register for: ").strip()
+
+    if name not in event_names:
+        print("Error: Event not found.")
+        return
+
+    index = event_names.index(name)
+
+    # Validate requested quantity
+    try:
+        qty = int(input(f"Enter number of seats requested (Available: {event_seats[index]}): "))
+        if qty <= 0:
+            print("Error: Requested quantity must be greater than zero.")
+            return
+        
+        if qty > event_seats[index]:
+            print(f"Error: Not enough seats available. Only {event_seats[index]} seats left.")
+            return
+    except ValueError:
+        print("Error: Invalid numeric input for seats quantity.")
+        return
+
+    # Calculate fee and update seat availability
+    unit_fee = event_fees[index]
+    total_fee = unit_fee * qty
+    event_seats[index] -= qty
+
+    # Display confirmation
+    print("\n" + "="*30)
+    print(" REGISTRATION CONFIRMATION ")
+    print("="*30)
+    print(f"Event Name : {name}")
+    print(f"Quantity   : {qty} seat(s)")
+    print(f"Unit Fee   : AED {unit_fee:.2f}")
+    print(f"Total Fee  : AED {total_fee:.2f}")
+    print("="*30)
+    print("Registration successful! Seat balance updated.")
+
+
+def main():
+    while True:
+        print("\n=== Campus Event Registration System ===")
+        print("1. Add an Event")
+        print("2. View Events")
+        print("3. Register Seats")
+        print("4. Exit")
+
+        choice = input("Select an option (1-4): ").strip()
+
+        if choice == '1':
+            add_event()
+        elif choice == '2':
+            view_events()
+        elif choice == '3':
+            register_seats()
+        elif choice == '4':
+            print("\nExiting program. Thank you!")
+            break
+        else:
+            print("Error: Invalid menu option. Please enter a number between 1 and 4.")
+
+
+if __name__ == "__main__":
+    main()
